@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class MedicosPanel extends JFrame {
+    //Se crean variables
 
     private JLabel Titulo;
     private JLabel JLabeltextoNombreDelMedico;
@@ -26,12 +27,14 @@ public class MedicosPanel extends JFrame {
     private ArrayList<Paciente> pacientes;
     private JFrame frame;
 
+    // Constructor que recibe una lista de pacientes
     public MedicosPanel(ArrayList<Paciente> pacientes) {
         initializeUI();
         this.pacientes = pacientes;
         eventoAceptar();
     }
 
+    // Método para inicializar la interfaz de usuario
     private void initializeUI() {
         setLayout(null);
         setTitle("Ingresa Datos del Medico");
@@ -40,6 +43,7 @@ public class MedicosPanel extends JFrame {
         setLocationRelativeTo(null);
         
 
+         // Componentes de la interfaz con sus respectivas posiciones y tamaños
         JLabeltextoNombreDelMedico = new JLabel("Nombre del medico: ");
         JLabeltextoNombreDelMedico.setBounds(50, 10, 120, 50);
         add(JLabeltextoNombreDelMedico);
@@ -83,6 +87,7 @@ public class MedicosPanel extends JFrame {
         JLabeltextoCobro.setBounds(120, 170, 120, 50);
         add(JLabeltextoCobro);
 
+        // Botones para Aceptar y Cerrar
         JButtonAceptar = new JButton("Aceptar");
         JButtonAceptar.setBounds(110, 220, 100, 40);
         add(JButtonAceptar);
@@ -92,13 +97,16 @@ public class MedicosPanel extends JFrame {
         add(JButtonCerrar);
     }
 
+    // Método para configurar el evento del botón "Aceptar"
     private void eventoAceptar() {
         JButtonAceptar.addActionListener(e -> {
+            // Obtener datos ingresados por el usuario
             String nombreMedico = JComboBoxseleccionNombreDelMedico.getSelectedItem().toString();
             String nombrePaciente = JTextFieldcampoNombreDelPaciente.getText();
             String especialidad = JComboBoxseleccionEspecialidad.getSelectedItem().toString();
             String horaSeleccionada = JComboBoxseleccionHorasDisponibles.getSelectedItem().toString();
 
+             // Crear un nuevo objeto Paciente y agregarlo a la lista
             Paciente nuevoPaciente = new Paciente(nombrePaciente, nombreMedico, especialidad, horaSeleccionada);
             nuevoPaciente.getNombreMedico();
             nuevoPaciente.getEspecialidad();
@@ -106,8 +114,10 @@ public class MedicosPanel extends JFrame {
 
             pacientes.add(nuevoPaciente);
 
+            // Limpiar el campo de nombre del paciente
             JTextFieldcampoNombreDelPaciente.setText("");
             
+            // Mostrar un mensaje con los detalles del paciente
             MessageAceptarMedicosPanel.showMessage(nombreMedico, especialidad, horaSeleccionada, nombrePaciente);
 
         });
@@ -115,6 +125,7 @@ public class MedicosPanel extends JFrame {
         this.frame = new JFrame();
         frame.setVisible(true);
 
+         // Configurar el evento del botón "Cerrar"
         JButtonCerrar.addActionListener(e -> {
             MainPanel mainPanel = new MainPanel(pacientes);
             mainPanel.setVisible(true);

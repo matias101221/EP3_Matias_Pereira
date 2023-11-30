@@ -2,18 +2,21 @@
 package com.mycompany.main;
 
 public class Paciente {
-    
+    //Se definen variables
     private String nombrePaciente;
     private String nombreMedico;
     private String especialidad;
     private String horasDisponibles;
 
+    //CONSTRUCTOR
     public Paciente(String nombrePaciente, String nombreMedico, String especialidad, String horasDisponibles) {
         this.nombrePaciente = nombrePaciente;
         this.nombreMedico = nombreMedico;
         this.especialidad = especialidad;
         this.horasDisponibles = horasDisponibles;
     }
+    
+    //GETER AND SETER PARA TRAER Y SETEAR DATOS
 
     public String getNombrePaciente() {
         return nombrePaciente;
